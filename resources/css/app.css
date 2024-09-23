@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply bg-primary text-white rounded-md hover:bg-[#f68f11] px-3 py-2 inline-block;
+    }
+    .sidebar-link {
+        @apply flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700;
+        &.active {
+            @apply bg-primary text-white;
+        }
+    }
+}
+
+body {
+    @apply font-jakarta-sans;
+}

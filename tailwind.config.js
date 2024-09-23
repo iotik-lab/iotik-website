@@ -2,7 +2,14 @@
 export default {
     content: ["./resources/**/*.blade.php", "./resources/**/*.js"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                primary: "#FF8901",
+            },
+            fontFamily: {
+                "jakarta-sans": ["Plus Jakarta Sans", "sans-serif"],
+            },
+        },
     },
     darkMode: "class",
     plugins: [],
