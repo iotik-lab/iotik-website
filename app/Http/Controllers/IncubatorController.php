@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IncubatorRequest;
+use App\Models\Incubators;
 use Illuminate\Http\Request;
 
 class IncubatorController extends Controller
@@ -11,7 +13,10 @@ class IncubatorController extends Controller
      */
     public function index()
     {
-        return view('pages.incubator');
+        $incubators = Incubators::all();
+        return view('pages.incubator.index',[
+            'incubators'=> $incubators
+        ]);
     }
 
     /**
@@ -19,15 +24,16 @@ class IncubatorController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.incubator.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(IncubatorRequest $request)
     {
-        //
+        Incubators::create($request->all());
+        return redirect()->route('incubator.index')->with('success','Data successfully created');
     }
 
     /**
@@ -35,7 +41,7 @@ class IncubatorController extends Controller
      */
     public function show(string $id)
     {
-        //
+ 
     }
 
     /**
@@ -43,15 +49,20 @@ class IncubatorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $incubators = Incubators::find($id);
+        return view('pages.incubator.edit',[
+            'incubator' => $incubators
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(IncubatorRequest $request, string $id)
     {
-        //
+        $incubator = Incubators::find($id);
+        $incubator->update($request->all());
+        return redirect()->route('incubator.index')->with('success','Date Successfully Updated');
     }
 
     /**
@@ -59,6 +70,7 @@ class IncubatorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Incubators::find($id)->delete();
+        return redirect()->route('incubator.index')->with('success','Data Successfully Deleted');
     }
 }

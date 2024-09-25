@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('status', ['empty','filled'])->default('empty');
             $table->date('start_date')->nullable();
-            $table->integer('egg_total');
+            $table->integer('egg_total')->nullable();
             $table->timestamps();
         });
     }
