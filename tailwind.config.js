@@ -5,6 +5,7 @@ export default {
         extend: {
             colors: {
                 primary: "#FF8901",
+                secondary: "#FFE56C",
             },
             fontFamily: {
                 "jakarta-sans": ["Plus Jakarta Sans", "sans-serif"],
