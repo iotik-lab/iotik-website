@@ -38,5 +38,40 @@
                 </a>
             --}}
         </div>
+
+        <div class="flex gap-5">
+            <div class="basis-1/4 border rounded shadow-md p-8">
+                <div class="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-red-100">
+                    <i class="fa-solid text-[25px] fa-temperature-three-quarters"></i>
+                </div>
+                <p class="mt-5">Temperature</p>
+                <p class="text-4xl font-semibold text-red-600">30 C</p>
+                <p class="text-sm mt-3">20 - Oct - 2022 12:00 AM</p>
+            </div>
+            <div class="basis-1/4 border rounded shadow-md p-8">
+                <div class="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-red-100">
+                    <i class="fa-solid text-[25px] fa-temperature-three-quarters"></i>
+                </div>
+                <p class="mt-5">Temperature</p>
+                <p class="text-4xl font-semibold text-red-600">30 C</p>
+                <p class="text-sm mt-3">20 - Oct - 2022 12:00 AM</p>
+            </div>
+            <div class="basis-1/4 border rounded shadow-md p-8">
+                <div class="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-red-100">
+                    <i class="fa-solid text-[25px] fa-temperature-three-quarters"></i>
+                </div>
+                <p class="mt-5">Temperature</p>
+                <p class="text-4xl font-semibold text-red-600">30 C</p>
+                <p class="text-sm mt-3">20 - Oct - 2022 12:00 AM</p>
+            </div>
+            <div class="basis-1/4 border rounded shadow-md p-8">
+                <div class="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-red-100">
+                    <i class="fa-solid text-[25px] fa-temperature-three-quarters"></i>
+                </div>
+                <p class="mt-5">Temperature</p>
+                <p class="text-4xl font-semibold text-red-600">30 C</p>
+                <p class="text-sm mt-3">20 - Oct - 2022 12:00 AM</p>
+            </div>
+        </div>
     </div>
 </x-app-layout>

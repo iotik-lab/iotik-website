@@ -101,8 +101,8 @@
             </li>
             <li>
                 <a
-                    href="{{ route("incubator.index") }}"
-                    class="sidebar-link group"
+                    href="{{ route("record.index") }}"
+                    class="sidebar-link group @active("record.*")"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
