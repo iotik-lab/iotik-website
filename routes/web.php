@@ -7,7 +7,7 @@ use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('leanding_page.home');
 });
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
