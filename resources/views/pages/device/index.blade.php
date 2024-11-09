@@ -129,16 +129,6 @@
                         Nama Incubator
                     </h1>
                     <div class="flex justify-center gap-6 mt-4">
-<<<<<<< HEAD
-                        <div class="flex gap-3 p-3 rounded bg-white items-center">
-                            <div class=" rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="text-red-700" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-temperature-sun">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 13.5a4 4 0 1 0 4 0v-8.5a2 2 0 1 0 -4 0v8.5" />
-=======
                         <div class="flex gap-3 items-center">
                             <div class="p-2 bg-red-100 rounded">
                                 <svg
@@ -162,7 +152,6 @@
                                     <path
                                         d="M4 13.5a4 4 0 1 0 4 0v-8.5a2 2 0 1 0 -4 0v8.5"
                                     />
->>>>>>> 7526c5ff05c986a3076f137790e5ba04af723058
                                     <path d="M4 9h4" />
                                     <path
                                         d="M13 16a4 4 0 1 0 0 -8a4.07 4.07 0 0 0 -1 .124"
@@ -176,16 +165,6 @@
                             </div>
                             <p class="font-[700]">33.00 C</p>
                         </div>
-<<<<<<< HEAD
-                        <div class="flex gap-3 rounded p-3 bg-white items-center">
-                            <div class=" rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg"\ width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-sun-wind">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M14.468 10a4 4 0 1 0 -5.466 5.46" />
-=======
                         <div class="flex gap-3 items-center">
                             <div class="p-2 bg-blue-100 rounded">
                                 <svg
@@ -209,7 +188,6 @@
                                     <path
                                         d="M14.468 10a4 4 0 1 0 -5.466 5.46"
                                     />
->>>>>>> 7526c5ff05c986a3076f137790e5ba04af723058
                                     <path d="M2 12h1" />
                                     <path d="M11 3v1" />
                                     <path d="M11 20v1" />
@@ -226,16 +204,6 @@
                         </div>
                     </div>
                     <div class="flex justify-center mt-3">
-<<<<<<< HEAD
-                        <div class="flex p-3 bg-white gap-3 rounded items-center">
-                            <div class="  rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-600" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-bulb">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-=======
                         <div class="flex gap-3 items-center">
                             <div class="p-2 bg-yellow-100 rounded">
                                 <svg
@@ -251,7 +219,6 @@
                                     stroke-linejoin="round"
                                     class="icon icon-tabler icons-tabler-outline icon-tabler-bulb"
                                 >
->>>>>>> 7526c5ff05c986a3076f137790e5ba04af723058
                                     <path
                                         stroke="none"
                                         d="M0 0h24v24H0z"
@@ -399,16 +366,6 @@
                             </div>
                         </div>
                         <div class="flex justify-center gap-5 mt-3 w-[100%]">
-<<<<<<< HEAD
-                        
-                                <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button"
-                                    class="font-medium me-2 text-white rounded p-2 bg-green-100 inline-block dark:text-blue-500 hover:underline">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-green-600" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-=======
                             <form action="" method="POST">
                                 @csrf
                                 @method("DELETE")
@@ -434,7 +391,6 @@
                                             d="M0 0h24v24H0z"
                                             fill="none"
                                         />
->>>>>>> 7526c5ff05c986a3076f137790e5ba04af723058
                                         <path d="M12 5l0 14" />
                                         <path d="M5 12l14 0" />
                                     </svg>
