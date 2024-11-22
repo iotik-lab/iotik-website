@@ -16,4 +16,4 @@ Route::resource('incubator', IncubatorController::class);
 Route::resource('device', DeviceController::class);
 Route::resource('record', RecordController::class);
 
-Route::get('/images', [ImagesController::class,'index'])->name('images.index');
+Route::get('/images/{id}', [ImagesController::class,'create'])->name('images.create');

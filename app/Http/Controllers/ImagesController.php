@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ImagesController extends Controller
 {
-    public function index() {
+    public function create($id) {
         return view('pages.image.index');
     }
 }

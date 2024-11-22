@@ -15,8 +15,17 @@
             @apply bg-primary text-white;
         }
     }
+    .egg {
+        @apply w-24 h-16 bg-yellow-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-yellow-500;
+    
+        &.active {
+          @apply bg-yellow-400;
+        }
+    }
+    
 }
 
 body {
     @apply font-jakarta-sans;
 }
+

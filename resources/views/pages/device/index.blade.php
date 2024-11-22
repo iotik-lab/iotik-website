@@ -207,9 +207,9 @@
                             </button>
 
 
-                            <a href=""
+                            <a href="{{ route('images.create', $incubator->id) }}"
                                 class="font-medium text-white rounded p-2 bg-orange-100 inline-block dark:text-blue-500 hover:underline">
-                                <i class="fa-solid fa-pen-to-square text-orange-600"></i>
+                                <i class="fa-solid fa-camera text-orange-600"></i>
                             </a>
                             <a href="{{ route('device.show', $incubator->id) }}"
                                 class="font-medium text-white rounded p-2 bg-blue-100 inline-block dark:text-blue-500 hover:underline">
