@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Record;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class RecordController extends Controller
 {
@@ -22,6 +23,12 @@ class RecordController extends Controller
             'type' => "humidity",
             'value' => $humidity,
         ]);
+
+        Http::post('localhost:3000/send', [
+            'temp' => $temperature,
+            'humi' => $humidity,
+        ]);
+
         return response()->json(['status' => 200]);
     }
 }

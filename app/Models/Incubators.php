@@ -9,4 +9,9 @@ class Incubators extends Model
 {
     use HasFactory;
     protected $guarded = ['id'] ;
+
+    public function devices()
+    {
+        return $this->hasMany(Device::class, 'incubator_id');
+    }
 }
