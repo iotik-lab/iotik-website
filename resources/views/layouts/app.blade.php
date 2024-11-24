@@ -25,7 +25,13 @@
         {{-- apexchart --}}
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         {{-- font awesome icon --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
         @vite("resources/css/app.css")
     </head>
     <body class="bg-slate-50">
@@ -87,6 +93,12 @@
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
         <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
         <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+            })
+
             $(document).ready(function () {
                 // $("#pageLoader").fadeOut();
                 $('#pageLoader').fadeOut('slow')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\DeviceType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('incubator_id')->constrained()->cascadeOnDelete();
             $table->string('code');
-            $table->enum('type', ['sprayer','temperature'])->default('sprayer');
+            $table->enum('type', DeviceType::values());
             $table->timestamps();
         });
     }
