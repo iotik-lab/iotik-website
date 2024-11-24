@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthCotroller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ImagesController;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('leanding_page.home');
 });
+
+Route::get('/login', [AuthCotroller::class,'index'])->name('login');
+Route::post('/login', [AuthCotroller::class,'authenticate'])->name('authenticate');
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
 Route::resource('incubator', IncubatorController::class);
