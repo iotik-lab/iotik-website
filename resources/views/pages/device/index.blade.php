@@ -170,7 +170,12 @@
                                     <path d="M18.7 17.7l.7 .7" />
                                 </svg>
                             </div>
-                            <p class="font-[700] temp-text">0 C</p>
+                            <p
+                                class="font-[700]"
+                                id="temp-text-{{ $incubator->devices()->where("type", "temperature")->first()->code }}"
+                            >
+                                0 C
+                            </p>
                         </div>
                         <div class="flex gap-3 items-center">
                             <div class="p-2 bg-blue-100 rounded">
@@ -207,7 +212,12 @@
                                     />
                                 </svg>
                             </div>
-                            <p class="font-[800] humi-text">0 %</p>
+                            <p
+                                class="font-[800]"
+                                id="humi-text-{{ $incubator->devices()->where("type", "temperature")->first()->code }}"
+                            >
+                                0 %
+                            </p>
                         </div>
                     </div>
                     <div class="flex justify-center mt-3">
@@ -484,22 +494,37 @@
 
     @push("script")
         <script>
-            const socket = new WebSocket('ws://127.0.0.1:3000')
-            socket.onmessage = function (event) {
+            const ws = new WebSocket('{{ config("app.ws_url") }}')
+
+            ws.onopen = () => {
+                ws.send(JSON.stringify({ device_id: 'io71k1' }))
+            }
+
+            ws.onmessage = (event) => {
                 const data = JSON.parse(event.data)
 
-                document.querySelectorAll('.temp-text').forEach((element) => {
-                    element.innerHTML = `${data.temp} C`
-                })
+                console.log(data)
 
-                document.querySelectorAll('.humi-text').forEach((element) => {
-                    element.innerHTML = `${data.humi} %`
-                })
-
-                document.querySelectorAll('.lamp-text').forEach((element) => {
-                    element.innerHTML = `${data.temp > 30 ? 'Mati' : 'Hidup'}`
-                })
+                $(`#temp-text-${data.device_id}`).html(`${data.temperature} C`)
+                $(`#humi-text-${data.device_id}`).html(`${data.humidity} %`)
             }
+
+            // const socket = new WebSocket('ws://127.0.0.1:3000')
+            // socket.onmessage = function (event) {
+            //     const data = JSON.parse(event.data)
+
+            //     document.querySelectorAll('.temp-text').forEach((element) => {
+            //         element.innerHTML = `${data.temp} C`
+            //     })
+
+            //     document.querySelectorAll('.humi-text').forEach((element) => {
+            //         element.innerHTML = `${data.humi} %`
+            //     })
+
+            //     document.querySelectorAll('.lamp-text').forEach((element) => {
+            //         element.innerHTML = `${data.temp > 30 ? 'Mati' : 'Hidup'}`
+            //     })
+            // }
         </script>
     @endpush
 </x-app-layout>
