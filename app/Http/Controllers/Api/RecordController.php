@@ -14,7 +14,9 @@ class RecordController extends Controller
     {
         $device = Device::where('code', $request->device_id)->first();
         if (!$device) return response()->json(['status' => 404], 404);
-
+        $device->update([
+            "last_send" => now()
+        ]);
         $temperature = number_format($request->temperature, 2);
         $humidity = number_format($request->humidity, 2);
 

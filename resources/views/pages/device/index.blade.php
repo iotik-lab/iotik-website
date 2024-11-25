@@ -124,13 +124,12 @@
 
         <div class="flex gap-5 flex-wrap">
             @foreach ($incubators as $incubator)
-                {{--
-                    @php
+                @php
                     $temperature = $incubator->devices()->where('type', 'temperature')->first();
-                    $latestTemperature = $temperature->record()->where('type', 'temperature')->latest()->first();
-                    $latestHumidity = $temperature->record()->where('type', 'humidity')->latest()->first();
-                    @endphp
-                --}}
+                    // $latestTemperature = $temperature->record()->where('type', 'temperature')->latest()->first();
+                    // $latestHumidity = $temperature->record()->where('type', 'humidity')->latest()->first();
+
+                @endphp
                 <div class="w-[300px] rounded-md shadow-sm bg-yellow-50">
                     <h1 class="text-center text-[25px] font-[700] mt-5">
                         {{ $incubator->name }}
@@ -170,11 +169,12 @@
                                     <path d="M18.7 17.7l.7 .7" />
                                 </svg>
                             </div>
+                          
                             <p
                                 class="font-[700]"
                                 id="temp-text-{{ $incubator->devices()->where("type", "temperature")->first()->code }}"
                             >
-                                0 C
+                            {{ $temperature->record()->where('type', 'temperature')->latest()->first()?->value  }} C
                             </p>
                         </div>
                         <div class="flex gap-3 items-center">
@@ -216,7 +216,7 @@
                                 class="font-[800]"
                                 id="humi-text-{{ $incubator->devices()->where("type", "temperature")->first()->code }}"
                             >
-                                0 %
+                            {{ $temperature->record()->where('type', 'humidity')->latest()->first()?->value }} %
                             </p>
                         </div>
                     </div>
