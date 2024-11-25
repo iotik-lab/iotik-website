@@ -21,6 +21,6 @@ Route::resource('device', DeviceController::class);
 Route::resource('record', RecordController::class);
 
 Route::controller(ImagesController::class)->name('images.')->group(function () {
-    Route::get('/images/create/{id}', 'create')->name('create');
+    Route::get('/images/create/{incubator}', 'create')->name('create');
     Route::post('/images/{device}/preview', 'preview')->name('preview');
 });

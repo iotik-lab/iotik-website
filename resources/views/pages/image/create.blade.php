@@ -151,7 +151,7 @@
 
             function sendCommand(command) {
                 $.ajax({
-                    url: '/images/1/preview',
+                    url: '/images/{{ $device->id }}/preview',
                     method: 'POST',
                     data: { mode: command },
                     success: function (res) {

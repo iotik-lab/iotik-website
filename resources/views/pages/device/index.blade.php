@@ -503,8 +503,6 @@
             ws.onmessage = (event) => {
                 const data = JSON.parse(event.data)
 
-                console.log(data)
-
                 $(`#temp-text-${data.device_id}`).html(`${data.temperature} C`)
                 $(`#humi-text-${data.device_id}`).html(`${data.humidity} %`)
             }

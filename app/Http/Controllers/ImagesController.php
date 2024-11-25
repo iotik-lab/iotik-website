@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\Incubator;
 use App\Models\Incubators;
 use App\Repos\MQTTRepository;
 use App\Traits\ApiResponser;
@@ -12,9 +13,10 @@ class ImagesController extends Controller
 {
     use ApiResponser;
 
-    public function create()
+    public function create(Incubator $incubator)
     {
-        return view('pages.image.create');
+        $device = $incubator->devices()->where("type", "camera")->first();
+        return view('pages.image.create', compact("device"));
     }
 
     public function preview(Request $request, Device $device)
