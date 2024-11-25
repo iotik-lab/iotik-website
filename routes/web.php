@@ -12,12 +12,15 @@ Route::get('/', function () {
     return view('leanding_page.home');
 });
 
-Route::get('/login', [AuthCotroller::class,'index'])->name('login');
-Route::post('/login', [AuthCotroller::class,'authenticate'])->name('authenticate');
+Route::get('/login', [AuthCotroller::class, 'index'])->name('login');
+Route::post('/login', [AuthCotroller::class, 'authenticate'])->name('authenticate');
 
-Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::resource('incubator', IncubatorController::class);
 Route::resource('device', DeviceController::class);
 Route::resource('record', RecordController::class);
 
-Route::get('/images/{id}', [ImagesController::class,'create'])->name('images.create');
+Route::controller(ImagesController::class)->name('images.')->group(function () {
+    Route::get('/images/create/{incubator}', 'create')->name('create');
+    Route::post('/images/{device}/preview', 'preview')->name('preview');
+});

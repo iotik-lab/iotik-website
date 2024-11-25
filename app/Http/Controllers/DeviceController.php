@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
-use App\Models\Incubators;
+use App\Models\Incubator;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -13,8 +13,8 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $incubators = Incubators::all();
-        return view("pages.device.index",[
+        $incubators = Incubator::all();
+        return view("pages.device.index", [
             "incubators" => $incubators
         ]);
     }
@@ -42,7 +42,7 @@ class DeviceController extends Controller
             'last_send' => now()
         ]);
         Device::create($request->all());
-        return redirect()->route('device.index')->with('success','Data successfully created');
+        return redirect()->route('device.index')->with('success', 'Data successfully created');
     }
 
     /**
@@ -65,7 +65,7 @@ class DeviceController extends Controller
             array_push($arrayHumidity, $data->value);
             array_push($arrayTimeHumidity, $data->created_at);
         }
-        return view("pages.device.detail",[
+        return view("pages.device.detail", [
             "device" => $device,
             "arrayTemperature" => $arrayTemperature,
             "arrayHumidity" => $arrayHumidity,

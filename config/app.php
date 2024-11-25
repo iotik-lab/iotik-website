@@ -53,6 +53,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'ws_url' => env('WS_URL', 'ws://localhost'),
+    'ws_http' => env('WS_HTTP', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,4 +125,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'mqtt' => [
+        'host' => env('MQTT_HOST', '127.0.0.1'),
+        'port' => env('MQTT_PORT', 1883),
+    ],
 ];
