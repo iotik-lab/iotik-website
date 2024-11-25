@@ -88,11 +88,12 @@
 
         <div class="flex gap-5 flex-wrap">
             @foreach ($incubators as $incubator)
-                {{-- @php
+                @php
                     $temperature = $incubator->devices()->where('type', 'temperature')->first();
-                    $latestTemperature = $temperature->record()->where('type', 'temperature')->latest()->first();
-                    $latestHumidity = $temperature->record()->where('type', 'humidity')->latest()->first();
-                @endphp --}}
+                    // $latestTemperature = $temperature->record()->where('type', 'temperature')->latest()->first();
+                    // $latestHumidity = $temperature->record()->where('type', 'humidity')->latest()->first();
+
+                @endphp
                 <div class="w-[300px] rounded-md shadow-sm bg-yellow-50">
                     <h1 class="text-center text-[25px] font-[700] mt-5">
                         {{ $incubator->name }}
@@ -115,7 +116,7 @@
                                     <path d="M18.7 17.7l.7 .7" />
                                 </svg>
                             </div>
-                            <p class="font-[700] temp-text">0 C</p>
+                            <p class="font-[700] temp-text">{{ $temperature->record()->where('type', 'temperature')->latest()->first()?->value  }} C</p>
                         </div>
                         <div class="flex gap-3 items-center">
                             <div class="p-2 bg-blue-100 rounded">
@@ -135,7 +136,7 @@
                                     <path d="M12 16h5.714l.253 0a2 2 0 0 1 2.033 2a2 2 0 0 1 -2 2h-.286" />
                                 </svg>
                             </div>
-                            <p class="font-[800] humi-text">0 %</p>
+                            <p class="font-[800] humi-text">{{ $temperature->record()->where('type', 'humidity')->latest()->first()?->value }} %</p>
                         </div>
                     </div>
                     <div class="flex justify-center mt-3">
