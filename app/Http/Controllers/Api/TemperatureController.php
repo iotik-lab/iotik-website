@@ -12,8 +12,8 @@ class TemperatureController extends Controller
     {
         $device = Device::where('code', $device_id)->first();
         if (!$device) return response()->json(['status' => 404], 404);
-        $minTemp = 37.0;
-        $maxTemp = 39.0;
+        $minTemp = 37.5;
+        $maxTemp = 39.5;
         $minHumi = 55.0;
         $maxHumi = 65.0;
         return response()->json(['minTemp' => $minTemp, 'maxTemp' => $maxTemp, 'minHumi' => $minHumi, 'maxHumi' => $maxHumi]);
