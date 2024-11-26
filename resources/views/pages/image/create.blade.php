@@ -104,6 +104,24 @@
 
                     <?php endforeach; ?>
                 </div>
+
+                <div class="flex mt-5 justify-start gap-x-4">
+                    <button
+                        id="led-start"
+                        class="py-1 px-3 bg-yellow-500 text-white rounded-md text-sm"
+                    >
+                        <i class="fas fa-lightbulb mr-1"></i>
+                        Nyalakan
+                    </button>
+
+                    <button
+                        id="led-stop"
+                        class="py-1 px-3 bg-red-600 text-white rounded-md text-sm"
+                    >
+                        <i class="far fa-lightbulb mr-1"></i>
+                        Matikan
+                    </button>
+                </div>
             </div>
             <div class="basis-1/2">
                 <h1 class="text font-[700] mb-3">Preview</h1>
@@ -138,7 +156,6 @@
                 </div>
             </div>
         </div>
-        <button>asd</button>
     </div>
 
     @push("script")
@@ -147,13 +164,28 @@
             const prevFrame = document.getElementById('preview-frame')
             const prevText = document.getElementById('preview-text')
             const prevStop = document.getElementById('preview-stop')
+            const ledStart = document.getElementById('led-start')
+            const ledStop = document.getElementById('led-stop')
             const ws = new WebSocket('{{ config("app.ws_url") }}')
 
             function sendCommand(command) {
                 $.ajax({
-                    url: '/images/{{ $device->id }}/preview',
+                    url: '/images/{{ $camera->id }}/preview',
                     method: 'POST',
                     data: { mode: command },
+                    success: function (res) {
+                        console.log(res)
+                    },
+                })
+            }
+
+            function updateLed(leds) {
+                console.log(leds)
+
+                $.ajax({
+                    url: '/images/{{ $led?->id }}/led',
+                    method: 'POST',
+                    data: { led: JSON.stringify(leds) },
                     success: function (res) {
                         console.log(res)
                     },
@@ -190,6 +222,18 @@
                 sendCommand('stop')
                 prevText.innerHTML = 'Klik untuk melihat preview'
                 prevFrame.style.backgroundImage = 'none'
+            })
+
+            ledStart.addEventListener('click', function () {
+                let actives = []
+                const eggs = document.querySelectorAll('.egg.active')
+
+                eggs.forEach((egg) => actives.push(egg.dataset.port))
+                updateLed(actives)
+            })
+
+            ledStop.addEventListener('click', function () {
+                updateLed([])
             })
         </script>
     @endpush

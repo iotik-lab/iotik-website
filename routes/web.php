@@ -23,4 +23,5 @@ Route::resource('record', RecordController::class);
 Route::controller(ImagesController::class)->name('images.')->group(function () {
     Route::get('/images/create/{incubator}', 'create')->name('create');
     Route::post('/images/{device}/preview', 'preview')->name('preview');
+    Route::post('/images/{device}/led', 'led')->name('led');
 });
