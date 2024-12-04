@@ -14,7 +14,8 @@ Route::controller(AuthController::class)
     ->name('api')
     ->group(function () {
         Route::post('login', 'login')->name('login');
+        Route::post('forgot-password', 'forgot')->name('forgot-password');
     });
 
-Route::post('/create-record',[RecordController::class,'apiCreate']);
-Route::get('/temp-threshold/{device_id}',[TemperatureController::class,'tempThreshold']);
+Route::post('/create-record', [RecordController::class, 'apiCreate']);
+Route::get('/temp-threshold/{device_id}', [TemperatureController::class, 'tempThreshold']);
