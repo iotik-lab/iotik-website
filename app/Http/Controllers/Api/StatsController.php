@@ -30,6 +30,8 @@ class StatsController extends Controller
         $device = Device::where('incubator_id', $incubator_id)
         ->where('type', 'temperature')->first();
 
+        if (!$device) return $this->error("Device Not Found",404);
+        
         $recordTemp = (new StatsRepository())->getStatsDetail($device->id, "temperature");
         $recordHumi = (new StatsRepository())->getStatsDetail($device->id, "humidity");
         $data = [
