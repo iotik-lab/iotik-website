@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RecordController;
+use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TemperatureController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,7 @@ Route::controller(AuthController::class)
         Route::post('reset-password', 'resetPass')->name('reset-pass');
     });
 
+Route::get('/stats/{incubator_id}', [StatsController::class, 'stats']);
+Route::get('/stats/{incubator_id}/detail', [StatsController::class, 'statsDetail']);
 Route::post('/create-record', [RecordController::class, 'apiCreate']);
 Route::get('/temp-threshold/{device_id}', [TemperatureController::class, 'tempThreshold']);
