@@ -15,6 +15,8 @@ Route::controller(AuthController::class)
     ->group(function () {
         Route::post('login', 'login')->name('login');
         Route::post('forgot-password', 'forgot')->name('forgot-password');
+        Route::post('verify-code', 'verifyCode')->name('verify-code');
+        Route::post('reset-password', 'resetPass')->name('reset-pass');
     });
 
 Route::post('/create-record', [RecordController::class, 'apiCreate']);

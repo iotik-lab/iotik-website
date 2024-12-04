@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\AuthException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\ForgotPassRequest;
-use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\Auth\ForgotPassRequest;
+use App\Http\Requests\Api\Auth\LoginRequest;
+use App\Http\Requests\Api\Auth\VerifyCodeRequest;
+use App\Http\Requests\Api\ResetPassRequest;
 use App\Models\User;
 use App\Repos\AuthRepository;
 use App\Traits\ApiResponser;
@@ -37,5 +40,27 @@ class AuthController extends Controller
 
         AuthRepository::sendVerification($user);
         return $this->success(message: 'Berhasil mengirimkan kode verifikasi');
+    }
+
+    public function verifyCode(VerifyCodeRequest $request)
+    {
+        try {
+            AuthRepository::verifyCode($request->email, $request->code);
+            return $this->success(message: 'Kode verifikasi valid');
+        } catch (AuthException $e) {
+            return $this->error(message: $e->getMessage(), code: 401);
+        }
+    }
+
+    public function resetPass(ResetPassRequest $request)
+    {
+        try {
+            $verify = AuthRepository::verifyCode($request->email, $request->code);
+            AuthRepository::resetPassword($verify->user, $request->password);
+
+            return $this->success(message: 'Berhasil reset password');
+        } catch (AuthException $e) {
+            return $this->error(message: $e->getMessage(), code: 401);
+        }
     }
 }
