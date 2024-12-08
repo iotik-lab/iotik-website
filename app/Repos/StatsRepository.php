@@ -17,7 +17,7 @@ class StatsRepository
     }
     public function getStatsDetail($device_id, $type)
     {
-        $record = Record::selectRaw('DATE(created_at) as date, HOUR(created_at) as hour, AVG(value) as average')
+        $record = Record::selectRaw('DATE(created_at) as date, HOUR(created_at) as hour, AVG(value) as average, MAX(value) as max, MIN(value) as min')
         ->groupByRaw('DATE(created_at), HOUR(created_at)')
         ->orderByRaw('DATE(created_at), HOUR(created_at)')
         ->where('device_id',$device_id)
