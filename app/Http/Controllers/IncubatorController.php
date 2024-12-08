@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IncubatorRequest;
 use App\Models\Incubator;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
 class IncubatorController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      */
@@ -69,5 +71,11 @@ class IncubatorController extends Controller
     {
         Incubator::find($id)->delete();
         return redirect()->route('incubator.index')->with('success', 'Data Successfully Deleted');
+    }
+
+    public function allIncubators()
+    {
+        $incubators = Incubator::all();
+        return $this->success($incubators, "Data Successfully Fetched");
     }
 }

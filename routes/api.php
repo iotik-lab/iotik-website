@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TemperatureController;
+use App\Http\Controllers\IncubatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::get('/stats/{incubator_id}', [StatsController::class, 'stats']);
 Route::get('/stats/{incubator_id}/detail', [StatsController::class, 'statsDetail']);
 Route::post('/create-record', [RecordController::class, 'apiCreate']);
 Route::get('/temp-threshold/{device_id}', [TemperatureController::class, 'tempThreshold']);
+Route::get('/incubators', [IncubatorController::class, 'allIncubators']);
