@@ -13,6 +13,7 @@ class StatsController extends Controller
 {
     use ApiResponser;
     public function stats($incubator_id) {
+
         $device = Device::where('incubator_id', $incubator_id)
         ->where('type', 'temperature')->first();
 
@@ -26,14 +27,15 @@ class StatsController extends Controller
         ];
         return $this->success($data,"Data Succesfuly Retrieved",200);
     }
-    public function statsDetail($incubator_id) {
+    public function statsDetail($incubator_id, Request $request) {
+        $date = $request->date ?? date('Y-m-d');
         $device = Device::where('incubator_id', $incubator_id)
         ->where('type', 'temperature')->first();
 
         if (!$device) return $this->error("Device Not Found",404);
         
-        $recordTemp = (new StatsRepository())->getStatsDetail($device->id, "temperature");
-        $recordHumi = (new StatsRepository())->getStatsDetail($device->id, "humidity");
+        $recordTemp = (new StatsRepository())->getStatsDetail($device->id, "temperature", $date);
+        $recordHumi = (new StatsRepository())->getStatsDetail($device->id, "humidity", $date);
         $data = [
             "temperature" => $recordTemp,
             "humidity" => $recordHumi
