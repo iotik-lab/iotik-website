@@ -9,6 +9,7 @@
         "irsyadulibad/laravel-activehelper": "^0.0.1",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
+        "laravel/telescope": "^5.2",
         "laravel/tinker": "^2.9",
         "php-mqtt/client": "^2.1"
     },
