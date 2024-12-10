@@ -32,7 +32,7 @@ class ImagesController extends Controller
     public function led(Request $request, Device $device)
     {
         $leds = @json_decode($request->led) ?? [];
-        MQTTRepository::pub("control/led", json_encode($leds));
+        MQTTRepository::pub("led/{$device->code}", json_encode($leds));
 
         return $this->success(message: 'success');
     }
