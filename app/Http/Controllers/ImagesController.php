@@ -18,7 +18,7 @@ class ImagesController extends Controller
         $camera = $incubator->devices()->where("type", "camera")->first();
         $led = $incubator->devices()->where("type", "candling")->first();
 
-        return view('pages.image.create', compact("camera", "led"));
+        return view('pages.image.create', compact("camera", "led", "incubator"));
     }
 
     public function preview(Request $request, Device $device)
@@ -34,6 +34,12 @@ class ImagesController extends Controller
         $leds = @json_decode($request->led) ?? [];
         MQTTRepository::pub("led/{$device->code}", json_encode($leds));
 
+        return $this->success(message: 'success');
+    }
+
+    public function candling(Incubator $incubator)
+    {
+        MQTTRepository::candling($incubator);
         return $this->success(message: 'success');
     }
 }

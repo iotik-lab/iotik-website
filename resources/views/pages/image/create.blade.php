@@ -147,7 +147,7 @@
                     </button>
 
                     <button
-                        id="preview-stop"
+                        id="candling-btn"
                         class="py-1 px-3 bg-blue-700 text-white rounded-md text-sm"
                     >
                         <i class="fas fa-square-caret-up mr-1"></i>
@@ -166,6 +166,8 @@
             const prevStop = document.getElementById('preview-stop')
             const ledStart = document.getElementById('led-start')
             const ledStop = document.getElementById('led-stop')
+            const candlingBtn = document.getElementById('candling-btn')
+
             const ws = new WebSocket('{{ config("app.ws_url") }}')
 
             function sendCommand(command) {
@@ -234,6 +236,18 @@
 
             ledStop.addEventListener('click', function () {
                 updateLed([])
+            })
+
+            candlingBtn.addEventListener('click', function (e) {
+                e.preventDefault()
+
+                $.ajax({
+                    url: '/images/{{ $incubator->id }}/candling',
+                    method: 'POST',
+                    success: function (res) {
+                        console.log(res)
+                    },
+                })
             })
         </script>
     @endpush

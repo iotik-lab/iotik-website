@@ -11,18 +11,24 @@ class Device extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected function casts(): array    
+    protected function casts(): array
     {
         return [
             'last_send' => 'datetime',
         ];
     }
-    public function isOnline() : Attribute
+    public function isOnline(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->last_send->diffInMinutes(now()) <= 60 ,
+            get: fn() => $this->last_send->diffInMinutes(now()) <= 60,
         );
-    } 
+    }
+
+    public function incubator()
+    {
+        return $this->belongsTo(Incubator::class);
+    }
+
     public function record(): HasMany
     {
         return $this->hasMany(Record::class);
