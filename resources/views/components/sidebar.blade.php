@@ -187,6 +187,15 @@
                     <span class="ms-3">User</span>
                 </a>
             </li>
+            <li>
+                <a
+                    href="{{ route("setting.index") }}"
+                    class="sidebar-link group @active("setting.*")"
+                >
+                <i class="fa-solid fa-gears"></i>
+                    <span class="ms-3">Setting</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

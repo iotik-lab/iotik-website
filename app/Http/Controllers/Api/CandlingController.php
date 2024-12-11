@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use App\Models\Image;
 use App\Repos\MQTTRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -21,9 +22,14 @@ class CandlingController extends Controller
         Log::info('candling', $request->all());
 
         $image = base64_decode($request->photo);
-        Storage::disk('local')->put('candling.jpg', $image);
+        $name = "candling" . time() . '.jpg';
+        Storage::disk('public')->put("/candling/$name", $image);
         MQTTRepository::candling($camera->incubator, true);
 
+        Image::create([
+            'incubator_id' => $camera->incubator_id,
+            'original_image' => $name
+        ]);
         return response()->json(['status' => 'success']);
     }
 }
