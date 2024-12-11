@@ -27,7 +27,7 @@ class MQTTRepository
 
         if (!$revert) {
             $mqtt->publish("temperature/{$temp->code}", "LIGHT:OFF", 0);
-            $mqtt->publish("led/{$led->code}", json_encode([1, 2, 3]), 0);
+            $mqtt->publish("led/{$led->code}", json_encode($incubator->leds), 0);
             $mqtt->publish("camera/{$camera->code}", "SEND", 0);
         } else {
             $mqtt->publish("temperature/{$temp->code}", "LIGHT:ON", 0);

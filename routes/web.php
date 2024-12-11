@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\IncubatorController;
+use App\Http\Controllers\LedController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -23,9 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('device', DeviceController::class);
     Route::resource('record', RecordController::class);
     Route::resource('user', UserController::class);
-    
+
     Route::get('/report-export', [RecordController::class, 'reportExport'])->name('report-export');
-    
+
     Route::controller(ImagesController::class)->name('images.')->group(function () {
         Route::get('/images/create/{incubator}', 'create')->name('create');
         Route::get('/images', 'index')->name('index');
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/images/{device}/led', 'led')->name('led');
         Route::post('/images/{incubator}/candling', 'candling')->name('candling');
     });
+
+    Route::post('/leds/{incubator}/update', [LedController::class, 'update'])->name('leds.update');
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
 });

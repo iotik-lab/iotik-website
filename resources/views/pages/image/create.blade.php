@@ -98,7 +98,10 @@
                 >
                     <?php foreach ($eggs as $egg) : ?>
 
-                    <div class="egg" data-port="<?= $egg ?>">
+                    <div
+                        class="egg {{ in_array($egg, $incubator->leds) ? "active" : "" }}"
+                        data-port="<?= $egg ?>"
+                    >
                         <?= $egg ?>
                     </div>
 
@@ -200,7 +203,21 @@
 
             eggs.forEach((egg) => {
                 egg.addEventListener('click', () => {
+                    let actives = []
+
                     egg.classList.toggle('active')
+                    document
+                        .querySelectorAll('.egg.active')
+                        .forEach((egg) => actives.push(egg.dataset.port))
+
+                    $.ajax({
+                        url: '/leds/{{ $incubator?->id }}/update',
+                        method: 'POST',
+                        data: { leds: JSON.stringify(actives) },
+                        success: function (res) {
+                            console.log(res)
+                        },
+                    })
                 })
             })
 
