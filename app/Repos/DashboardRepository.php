@@ -3,9 +3,9 @@ namespace App\Repos;
 
 use App\Models\Record;
 
-class RecordRepository
+class DashboardRepository
 {
-    public static function getRecord($device_id, $type){
+    public static function getChart($device_id, $type){
         $record = Record::selectRaw('DATE(created_at) as date, HOUR(created_at) as hour, AVG(value) as average')
         ->groupByRaw('DATE(created_at), HOUR(created_at)')
         ->orderByRaw('DATE(created_at) DESC, HOUR(created_at) DESC')

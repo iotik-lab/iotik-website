@@ -71,7 +71,9 @@ class RecordController extends Controller
 
     public function reportExport(Request $request)
     {
-        $device = Device::where('incubator_id', $request->incubator_id)->first();
+        $device = Device::where('incubator_id', $request->incubator_id)
+        ->where('type', 'temperature')
+        ->first();
         $name = $device->incubator->name;
         return Excel::download(new RecordExport($device->id),"record $name.xlsx");
     }

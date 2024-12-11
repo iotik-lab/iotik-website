@@ -105,6 +105,8 @@
                         dateHumi.push(element.date + " " + element.hour + ":00");
                     })
 
+                    temp.reverse()
+                    humi.reverse()
                     var optionsTemperature = {
                         chart: {
                             type: 'area'
@@ -113,10 +115,10 @@
                         colors: ['#F44336', '#E91E63', '#9C27B0'],
                         series: [{
                             name: 'temperature',
-                            data: temp
+                            data: temp.reverse()
                         }],
                         xaxis: {
-                            categories: dateTemp
+                            categories: dateTemp.reverse()
                         }
                     }
 
@@ -126,10 +128,10 @@
                         },
                         series: [{
                             name: 'sales',
-                            data: humi
+                            data: humi.reverse()
                         }],
                         xaxis: {
-                            categories: dateHumi
+                            categories: dateHumi.reverse()
                         }
                     }
 
@@ -144,11 +146,11 @@
                     chartHumidity.render();
                     chartHumidity.updateSeries([{
                         name: "sales",
-                        data: humi
+                        data: humi.reverse()
                     }])
                     chartTemperature.updateSeries([{
                         name: "sales",
-                        data: temp
+                        data: temp.reverse()
                     }])
                 }
             })

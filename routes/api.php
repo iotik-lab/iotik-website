@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CandlingController;
 use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TemperatureController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IncubatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::get('/incubators', [IncubatorController::class, 'allIncubators']);
 Route::post('/candling', [CandlingController::class, 'candling']);
 
 Route::get('/record/{incubator_id}', [RecordController::class, 'record'])->name('record.chart');
+Route::get('/dashboard-chart-temperature', [DashboardController::class, 'chartTemperature']);
+Route::get('/dashboard-chart-humidity', [DashboardController::class, 'chartHumidity']);
