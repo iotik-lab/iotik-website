@@ -20,6 +20,8 @@ Route::resource('incubator', IncubatorController::class);
 Route::resource('device', DeviceController::class);
 Route::resource('record', RecordController::class);
 
+Route::get('/report-export', [RecordController::class, 'reportExport'])->name('report-export');
+
 Route::controller(ImagesController::class)->name('images.')->group(function () {
     Route::get('/images/create/{incubator}', 'create')->name('create');
     Route::post('/images/{device}/preview', 'preview')->name('preview');

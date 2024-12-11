@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RecordExport;
+use App\Models\Device;
+use App\Models\Incubator;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RecordController extends Controller
 {
@@ -11,7 +15,10 @@ class RecordController extends Controller
      */
     public function index()
     {
-        return view("pages.record.index");
+        $incubators = Incubator::all();
+        return view("pages.record.index",[
+            "incubators" => $incubators
+        ]);
     }
 
     /**
@@ -60,5 +67,12 @@ class RecordController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function reportExport(Request $request)
+    {
+        $device = Device::where('incubator_id', $request->incubator_id)->first();
+        $name = $device->incubator->name;
+        return Excel::download(new RecordExport($device->id),"record $name.xlsx");
     }
 }
