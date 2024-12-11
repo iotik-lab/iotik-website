@@ -391,7 +391,7 @@
                                 data-aos="fade-right"
                             />
                             <img
-                                src="image/mobile3.png"
+                                src="image/mobile4.jpg"
                                 alt="Laptop"
                                 class="w-80 max-w-full h-auto rounded-xl"
                                 data-aos="fade-right"

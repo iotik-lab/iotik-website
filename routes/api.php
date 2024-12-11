@@ -21,6 +21,7 @@ Route::controller(AuthController::class)
         Route::post('forgot-password', 'forgot')->name('forgot-password');
         Route::post('verify-code', 'verifyCode')->name('verify-code');
         Route::post('reset-password', 'resetPass')->name('reset-pass');
+        Route::post('update-profile', 'updateProfile')->name('update-profile')->middleware("auth:sanctum");
     });
 
 Route::get('/stats/{incubator_id}', [StatsController::class, 'stats']);

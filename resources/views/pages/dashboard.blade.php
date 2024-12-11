@@ -77,9 +77,9 @@
                 <div class="mt-4 flex items-end justify-between">
                     <div>
                         <h4 class="text-title-md font-bold text-black dark:text-white">
-                            $3.456K
+                            4
                         </h4>
-                        <span class="text-sm font-medium">Total views</span>
+                        <span class="text-sm font-medium">Device</span>
                     </div>
 
                     <span class="flex items-center gap-1 text-sm font-medium text-green-600">
@@ -111,9 +111,9 @@
                 <div class="mt-4 flex items-end justify-between">
                     <div>
                         <h4 class="text-title-md font-bold text-black dark:text-white">
-                            $3.456K
+                            30
                         </h4>
-                        <span class="text-sm font-medium">Total views</span>
+                        <span class="text-sm font-medium">Telur</span>
                     </div>
 
                     <span class="flex items-center gap-1 text-sm font-medium text-green-600">
@@ -145,9 +145,9 @@
                 <div class="mt-4 flex items-end justify-between">
                     <div>
                         <h4 class="text-title-md font-bold text-black dark:text-white">
-                            $3.456K
+                            
                         </h4>
-                        <span class="text-sm font-medium">Total views</span>
+                        <span class="text-sm font-medium">User</span>
                     </div>
 
                     <span class="flex items-center gap-1 text-sm font-medium text-green-600">

@@ -63,4 +63,13 @@ class AuthController extends Controller
             return $this->error(message: $e->getMessage(), code: 401);
         }
     }
+
+    public function updateProfile(Request $request)
+    {
+        $request->user()->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+        return $this->success(message: 'Berhasil update profile');
+    }
 }

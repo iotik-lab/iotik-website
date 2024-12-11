@@ -132,8 +132,8 @@
             </li>
             <li>
                 <a
-                href=""
-                    class="sidebar-link group "
+                href="{{ route("images.index") }}"
+                    class="sidebar-link group @avtive("images.index")"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

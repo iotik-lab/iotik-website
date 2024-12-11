@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\Image;
 use App\Models\Incubator;
 use App\Models\Incubators;
 use App\Repos\MQTTRepository;
@@ -12,6 +13,14 @@ use Illuminate\Http\Request;
 class ImagesController extends Controller
 {
     use ApiResponser;
+
+    public function index()
+    {
+        $images = Image::all();
+        return view("pages.image.index",[
+            "images" => $images
+        ]);
+    }
 
     public function create(Incubator $incubator)
     {
