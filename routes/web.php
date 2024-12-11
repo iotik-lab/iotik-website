@@ -6,6 +6,7 @@ use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\IncubatorController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('incubator', IncubatorController::class);
 Route::resource('device', DeviceController::class);
 Route::resource('record', RecordController::class);
+Route::resource('user', UserController::class);
 
 Route::get('/report-export', [RecordController::class, 'reportExport'])->name('report-export');
 

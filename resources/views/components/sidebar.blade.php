@@ -161,8 +161,8 @@
             </li>
             <li>
                 <a
-                    href="{{ route("incubator.index") }}"
-                    class="sidebar-link group"
+                    href="{{ route("user.index") }}"
+                    class="sidebar-link group @active("user.*")"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
