@@ -29,3 +29,5 @@ Route::get('/temp-threshold/{device_id}', [TemperatureController::class, 'tempTh
 Route::get('/incubators', [IncubatorController::class, 'allIncubators']);
 
 Route::post('/candling', [CandlingController::class, 'candling']);
+
+Route::get('/record/{incubator_id}', [RecordController::class, 'record'])->name('record.chart');
