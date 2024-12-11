@@ -38,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/leds/{incubator}/update', [LedController::class, 'update'])->name('leds.update');
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 });

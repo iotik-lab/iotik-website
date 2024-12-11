@@ -58,7 +58,11 @@
         </div>
     @endif
 
-    <div class="relative overflow-x-auto bg-white p-5 shadow-md sm:rounded-lg">
+    <form
+        class="relative overflow-x-auto bg-white p-5 shadow-md sm:rounded-lg"
+        method="POST"
+    >
+        @csrf
         <div class="flex justify-between mb-5 items-center">
             <div class="flex items-center gap-5">
                 <div class="p-2 bg-primary rounded text-white">
@@ -66,12 +70,71 @@
                 </div>
                 <p class="text font-bold">Setting</p>
             </div>
-            <a href="{{ route("incubator.create") }}" class="btn-primary">
-                Tambah
-            </a>
         </div>
-      
-    </div>
+
+        <div class="mt-10 flex justify-between gap-7 flex-col lg:flex-row">
+            <div class="border bg-white shadow-lg rounded-lg px-2 py-3 w-full">
+                <p class="m-0 text-center font-bold mb-5">Temperature (°C)</p>
+
+                <div class="flex justify-center items-center gap-10 mt-4">
+                    <div class="flex justify-center flex-col items-center">
+                        <input
+                            type="text"
+                            class="text-3xl p-0 text-center border-4 border-orange-400 w-24 rounded-lg py-4"
+                            value="{{ settings("temp.min") ?? 37 }}"
+                            name="temp[min]"
+                        />
+                        <p class="m-0 mt-1 text-sm">Minimal</p>
+                    </div>
+
+                    <div class="flex justify-center flex-col items-center">
+                        <input
+                            type="text"
+                            class="text-3xl p-0 text-center border-4 border-orange-400 w-24 rounded-lg py-4"
+                            value="{{ settings("temp.max") ?? 39 }}"
+                            name="temp[max]"
+                        />
+                        <p class="m-0 mt-1 text-sm">Maksimal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border bg-white shadow-lg rounded-lg px-2 py-3 w-full">
+                <p class="m-0 text-center font-bold">Kelembaban (%)</p>
+
+                <div class="flex justify-center items-center gap-10 mt-4">
+                    <div class="flex justify-center flex-col items-center">
+                        <input
+                            type="text"
+                            class="text-3xl p-0 text-center border-4 border-orange-400 w-24 rounded-lg py-4"
+                            value="{{ settings("humi.min") ?? 55 }}"
+                            name="humi[min]"
+                        />
+                        <p class="m-0 mt-1 text-sm">Minimal</p>
+                    </div>
+
+                    <div class="flex justify-center flex-col items-center">
+                        <input
+                            type="text"
+                            class="text-3xl p-0 text-center border-4 border-orange-400 w-24 rounded-lg py-4"
+                            value="{{ settings("humi.max") ?? 70 }}"
+                            name="humi[max]"
+                        />
+                        <p class="m-0 mt-1 text-sm">Maksimal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-8">
+            <button
+                type="submit"
+                class="bg-orange-400 px-4 py-2 rounded-lg text-white font-bold"
+            >
+                Simpan
+            </button>
+        </div>
+    </form>
 
     @push("script")
         <script>
