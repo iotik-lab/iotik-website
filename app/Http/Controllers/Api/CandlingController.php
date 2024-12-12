@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\GetPrediction;
 use App\Models\Device;
 use App\Models\Image;
 use App\Repos\MQTTRepository;
@@ -28,12 +29,13 @@ class CandlingController extends Controller
         Storage::disk('public')->put("/candling/$name", $image);
         MQTTRepository::candling($camera->incubator, true);
 
-        Image::create([
+        $image = Image::create([
             'incubator_id' => $camera->incubator_id,
             'original_image' => $name
         ]);
 
         Http::post(config('app.ws_http') . '/candling');
+        GetPrediction::dispatch($image);
 
         return response()->json(['status' => 'success']);
     }

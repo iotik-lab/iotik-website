@@ -55,6 +55,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
     'ws_url' => env('WS_URL', 'ws://localhost'),
     'ws_http' => env('WS_HTTP', 'http://localhost'),
+    'ai_url' => env('AI_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
