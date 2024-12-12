@@ -122,7 +122,7 @@
                             <img src="/storage/candling/{{ $image['original_image']}}" class="w-[200px]" alt="">
                         </td>
                         <td class="px-6 py-4">
-                            <img src="/storage/candling/{{ $image['predicted_image']}}" class="w-[200px]" alt="">
+                            <img src="/storage/predicted/{{ $image['predicted_image']}}" class="w-[200px]" alt="">
                         </td>
                         <td class="px-6 py-4">
                             {{ $image['fertily'] }}
