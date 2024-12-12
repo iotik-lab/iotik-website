@@ -17,7 +17,7 @@ class ImagesController extends Controller
     public function index()
     {
         $images = Image::all();
-        return view("pages.image.index",[
+        return view("pages.image.index", [
             "images" => $images
         ]);
     }
@@ -28,6 +28,11 @@ class ImagesController extends Controller
         $led = $incubator->devices()->where("type", "candling")->first();
 
         return view('pages.image.create', compact("camera", "led", "incubator"));
+    }
+
+    public function loading(Incubator $incubator)
+    {
+        return view('pages.image.loading', compact("incubator"));
     }
 
     public function preview(Request $request, Device $device)
@@ -50,5 +55,11 @@ class ImagesController extends Controller
     {
         MQTTRepository::candling($incubator);
         return $this->success(message: 'success');
+    }
+
+    public function destroy(Image $image)
+    {
+        $image->delete();
+        return back()->with('success', 'Berhasil menghapus gambar');
     }
 }
