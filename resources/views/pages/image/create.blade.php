@@ -262,7 +262,8 @@
                     url: '/images/{{ $incubator->id }}/candling',
                     method: 'POST',
                     success: function (res) {
-                        console.log(res)
+                        document.location.href =
+                            '/images/{{ $incubator->id }}/loading'
                     },
                 })
             })

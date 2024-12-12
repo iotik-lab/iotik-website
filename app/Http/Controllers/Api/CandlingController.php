@@ -7,6 +7,7 @@ use App\Models\Device;
 use App\Models\Image;
 use App\Repos\MQTTRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,7 @@ class CandlingController extends Controller
 
         $image = base64_decode($request->photo);
         $name = "candling" . time() . '.jpg';
+
         Storage::disk('public')->put("/candling/$name", $image);
         MQTTRepository::candling($camera->incubator, true);
 
@@ -30,6 +32,9 @@ class CandlingController extends Controller
             'incubator_id' => $camera->incubator_id,
             'original_image' => $name
         ]);
+
+        Http::post(config('app.ws_http') . '/candling');
+
         return response()->json(['status' => 'success']);
     }
 }

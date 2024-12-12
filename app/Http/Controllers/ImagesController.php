@@ -30,6 +30,11 @@ class ImagesController extends Controller
         return view('pages.image.create', compact("camera", "led", "incubator"));
     }
 
+    public function loading(Incubator $incubator)
+    {
+        return view('pages.image.loading', compact("incubator"));
+    }
+
     public function preview(Request $request, Device $device)
     {
         $mode = strtoupper($request->mode);
