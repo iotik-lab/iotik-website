@@ -40,12 +40,12 @@
             </span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button
-                type="button"
+            <a
+                href="{{ route('login') }}"
                 class="black text-[#ffffff] bg-orange-300 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:ring-orange-300 dark:hover:ring-orange-300 dark:focus:ring-orange-300"
             >
                 Login
-            </button>
+        </a>
             <button
                 data-collapse-toggle="navbar-sticky"
                 type="button"
