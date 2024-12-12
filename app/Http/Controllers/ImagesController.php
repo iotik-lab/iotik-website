@@ -51,4 +51,10 @@ class ImagesController extends Controller
         MQTTRepository::candling($incubator);
         return $this->success(message: 'success');
     }
+
+    public function destroy(Image $image)
+    {
+        $image->delete();
+        return back()->with('success', 'Berhasil menghapus gambar');
+    }
 }

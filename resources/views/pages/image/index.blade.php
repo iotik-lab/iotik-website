@@ -85,9 +85,6 @@
                 </div>
                 <p class="text font-bold">Images</p>
             </div>
-            <a href="{{ route("incubator.create") }}" class="btn-primary">
-                Tambah
-            </a>
         </div>
         <table
             class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -119,21 +116,29 @@
                         </th>
                         <td class="px-6 py-4">{{ $image["created_at"] }}</td>
                         <td class="px-6 py-4">
-                            <img src="/storage/candling/{{ $image['original_image']}}" class="w-[200px]" alt="">
+                            <img
+                                src="/storage/candling/{{ $image["original_image"] }}"
+                                class="w-[200px]"
+                                alt=""
+                            />
                         </td>
                         <td class="px-6 py-4">
-                            <img src="/storage/candling/{{ $image['predicted_image']}}" class="w-[200px]" alt="">
+                            <img
+                                src="/storage/candling/{{ $image["predicted_image"] }}"
+                                class="w-[200px]"
+                                alt=""
+                            />
                         </td>
                         <td class="px-6 py-4">
-                            {{ $image['fertily'] }}
+                            {{ $image["fertily"] }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $image['unfertily'] }}
+                            {{ $image["unfertily"] }}
                         </td>
-                        <td class="px-6 py-4 ">
+                        <td class="px-6 py-4">
                             <form
-                            class="h-full"
-                                {{-- action="{{ route("image.destroy", $image["id"]) }}" --}}
+                                class="h-full"
+                                action="{{ route("images.destroy", $image["id"]) }}"
                                 method="POST"
                             >
                                 @csrf
@@ -171,7 +176,6 @@
                                     </svg>
                                 </button>
                             </form>
-
                         </td>
                     </tr>
                 @endforeach

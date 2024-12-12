@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/images/{device}/preview', 'preview')->name('preview');
         Route::post('/images/{device}/led', 'led')->name('led');
         Route::post('/images/{incubator}/candling', 'candling')->name('candling');
+        Route::delete(('images/{image}'), 'destroy')->name('destroy');
     });
 
     Route::post('/leds/{incubator}/update', [LedController::class, 'update'])->name('leds.update');
