@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CandlingController;
+use App\Http\Controllers\Api\ImagesController as ApiImagesController;
 use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TemperatureController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\IncubatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,8 @@ Route::get('/temp-threshold/{device_id}', [TemperatureController::class, 'tempTh
 Route::get('/incubators', [IncubatorController::class, 'allIncubators']);
 
 Route::post('/candling', [CandlingController::class, 'candling']);
+Route::post('/candling-mobile', [CandlingController::class, 'candlingMobile']);
+Route::get('/image', [ApiImagesController::class, 'getImages']);
 
 Route::get('/record/{incubator_id}', [RecordController::class, 'record'])->name('record.chart');
 Route::get('/dashboard-chart-temperature', [DashboardController::class, 'chartTemperature']);
