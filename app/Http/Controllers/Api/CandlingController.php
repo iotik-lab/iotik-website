@@ -41,29 +41,4 @@ class CandlingController extends Controller
 
         return response()->json(['status' => 'success']);
     }
-    public function candlingMobile(Request $request)
-    {
-        $camera = Device::where('code', $request->device_id)->first();
-
-        if (!$camera)
-            return response()->json(['status' => 404], 404);
-
-        Log::info('candling', $request->all());
-
-        $image = base64_decode($request->photo);
-        $name = "candling" . time() . '.jpg';
-
-        Storage::disk('public')->put("/candling/$name", $image);
-        MQTTRepository::candling($camera->incubator, true);
-
-        $image = Image::create([
-            'incubator_id' => $camera->incubator_id,
-            'original_image' => $name
-        ]);
-
-        Http::post(config('app.ws_http') . '/candling');
-        GetPrediction::dispatch($image);
-
-        return $this->success(message: 'Candling success');
-    }
 }
