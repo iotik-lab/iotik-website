@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\GetPrediction;
 use App\Models\Device;
 use App\Models\Image;
+use App\Repos\ImageRepository;
 use App\Repos\MQTTRepository;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
