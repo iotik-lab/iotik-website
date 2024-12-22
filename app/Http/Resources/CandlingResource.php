@@ -19,7 +19,7 @@ class CandlingResource extends JsonResource
             'id' => $this->id,
             'incubator_name' => $this->incubator->name,
             'original_image' => asset("storage/candling/" . "$this->original_image"),
-            'predicted_image' => asset("storage/prediction/" . "$this->predicted_image"),
+            'predicted_image' => asset("storage/predicted/" . "$this->predicted_image"),
             'fertily' => $this->fertily,
             'unfertily' => $this->unfertily,
             'created_at' => $this->created_at
