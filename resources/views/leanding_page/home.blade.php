@@ -78,6 +78,15 @@
                 </div>
             </section>
 
+            <section class="flex justify-center">
+                <iframe
+                    class="w-[1000px] h-[570px]"
+                    src="https://www.youtube.com/embed/CHYSuorN-j0?autoplay=1&mute=1&loop=1&playlist=CHYSuorN-j0"
+                    frameborder="0"
+                    allow="autoplay"
+                ></iframe>
+            </section>
+
             <div class="p-10">
                 <!-- Header Section -->
                 <div class="text-center mb-20">
